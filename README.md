@@ -48,4 +48,5 @@ tutorials:
 # primer1   : "Programming Basics"    (adopted from rstudio-education/primers)
 # primer2   : "Visualization Basics"  (adopted from rstudio-education/primers)
 #learnr::run_tutorial("primer1", "him.ida730")
+#learnr::run_tutorial("primer2", "him.ida730")
 ```
