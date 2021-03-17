@@ -4,7 +4,12 @@ output:
   learnr::tutorial:
     progressive: true
     allow_skip: true
-runtime: shiny_prerendered
+    df_print: default
+runtime: 
+  shiny_prerendered
+tutorial:
+  id: "com.rstudio.primers.02-Vis-Basics"
+  version: 1.0
 ---
 
 ```{r setup, include=FALSE}

@@ -46,37 +46,37 @@ Please take a look at the list of topics with examples and exercises that you ca
 #----------------------------------------------
 # Section 1 : The Basics
 #----------------------------------------------
-# primer1_1 : "Data Visualization Basics"
-# primer1_2 : "Programming Basics"
+# primer1-1 : "Data Visualization Basics"
+# primer1-2 : "Programming Basics"
 
 #----------------------------------------------
 # Section 2 : Transform and Work with Data
 #----------------------------------------------
-# primer2_1 : "Working with Tibbles"
-# primer2_2 : "Isolating Data with dplyr"
-# primer2_3 : "Deriving Information with dplyr"
+# primer2-1 : "Working with Tibbles"
+# primer2-2 : "Isolating Data with dplyr"
+# primer2-3 : "Deriving Information with dplyr"
 
 #----------------------------------------------
 # Section 3 : Visualize Data
 #----------------------------------------------
-# primer3_1 : "Exploratory Data Analysis"
-# primer3_2 : "Bar Charts"
-# primer3_3 : "Histograms"
-# primer3_4 : "Boxplots and Counts"
-# primer3_5 : "Scatterplots"
-# primer3_6 : "Line Plots"
-# primer3_7 : "Overplotting and Big Data"
-# primer3_8 : "Customize Your Plots"
+# primer3-1 : "Exploratory Data Analysis"
+# primer3-2 : "Bar Charts"
+# primer3-3 : "Histograms"
+# primer3-4 : "Boxplots and Counts"
+# primer3-5 : "Scatterplots"
+# primer3-6 : "Line Plots"
+# primer3-7 : "Overplotting and Big Data"
+# primer3-8 : "Customize Your Plots"
 
 #----------------------------------------------
 # Section 4 : Tidy Data
 #----------------------------------------------
-# primer4_1 : "Reshape Data"
-# primer4_2 : "Separate Columns"
-# primer4_3 : "Join Data Sets"
+# primer4-1 : "Reshape Data"
+# primer4-2 : "Separate Columns"
+# primer4-3 : "Join Data Sets"
 
 # To load a specific tutorial execute a following command:
-#learnr::run_tutorial("primer1_1", "him.ida730")
+#learnr::run_tutorial("primer1-1", "him.ida730")
 
 # Source:
 # https://rstudio.cloud/learn/primers
