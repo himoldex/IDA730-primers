@@ -19,6 +19,7 @@ checker <- function(label, user_code, check_code, envir_result, evaluate_result,
   list(message = check_code, correct = TRUE, location = "append")
 }
 tutorial_options(exercise.timelimit = 60, exercise.checker = checker)
+knitr::opts_chunk$set(error = TRUE, out.width = "100%")
 ```
 
 ```{r, context="server-start", include=FALSE}
@@ -33,7 +34,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -52,7 +53,7 @@ It is also a great way to start learning R; when you visualize data, you get an 
 
 This tutorial will teach you how to visualize data with R's most popular visualization package, `ggplot2`.
 
-### 
+###
 
 The tutorial focuses on three basic skills:
 
@@ -71,7 +72,8 @@ These examples are excerpted from _R for Data Science_ by Hadley Wickham and Gar
 
 > "The simple graph has brought more information to the data analyst’s mind 
 > than any other device. " --- John Tukey
-### 
+
+###
 
 Let's begin with a question to explore.
 
@@ -95,12 +97,12 @@ To see the `mpg` data frame, type `mpg` in the code block below and click "Submi
 
 ```
 
-```{r mpg0-solution}
+```{r mpg0-solution, exercise.reveal_solution = TRUE}
 mpg
 ```
 
 ```{r mpg0-check}
-"Good job!  We'll use interactive code chunks like this throughout these tutorials. Whenever you encounter one, you can click Submit Answer to run (or re-run) the code in the chunk. If there is a Solution button, you can click it to see the answer."
+"We'll use interactive code chunks like this throughout these tutorials. Whenever you encounter one, you can click Submit Answer to run (or re-run) the code in the chunk. If there is a Solution button, you can click it to see the answer."
 ```
 
 You can use the black triangle that appears at the top right of the table to scroll through all of the columns in `mpg`.
@@ -194,18 +196,18 @@ Give it a try! Replace the bracketed sections with `mpg`, `geom_boxplot`, and `x
 #  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-```{r template-solution}
+```{r template-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) + 
   geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
 ```{r template-check}
-"Good job! This plot uses boxplots to compare the fuel efficiencies of different types of cars. ggplot2 comes with many geom functions that each add a different type of layer to a plot. You'll learn more about boxplots and other geoms in the tutorials that follow."
+"This plot uses boxplots to compare the fuel efficiencies of different types of cars. ggplot2 comes with many geom functions that each add a different type of layer to a plot. You'll learn more about boxplots and other geoms in the tutorials that follow."
 ```
 
 ### Common problems
 
-As you start to run R code, you're likely to run into problems. Don't worry --- it happens to everyone. I have been writing R code for years, and every day I still write code that doesn't work! 
+As you start to run R code, you're likely to run into problems. Don't worry --- it happens to everyone.
 
 Start by carefully comparing the code that you're running to the code in the examples. R is extremely picky, and a misplaced character can make all the difference. Make sure that every `(` is matched with a `)` and every `"` is paired with another `"`. Also pay attention to capitalization; R is case sensitive.
 
@@ -213,7 +215,7 @@ Start by carefully comparing the code that you're running to the code in the exa
 
 One common problem when creating ggplot2 graphics is to put the `+` in the wrong place: it has to come at the end of a line, not the start. In other words, make sure you haven't accidentally written code like this:
 
-```R
+```{r eval = FALSE}
 ggplot(data = mpg) 
 + geom_point(mapping = aes(x = displ, y = hwy))
 ```
@@ -234,7 +236,7 @@ Run `ggplot(data = mpg)` what do you see?
 ```
 
 ```{r blank-check}
-"Good job! A ggplot that has no layers looks blank. To finish the graph, add a geom function."
+"A ggplot that has no layers looks blank. To finish the graph, add a geom function."
 ```
      
 ### Exercise 2 
@@ -247,10 +249,6 @@ Make a scatterplot of `cty` vs `hwy`.
 ```
 
 ```{r scatterplot-check}
-"Excellent work!"
-```
-
-```{r scatterplot-hint}
 "Scatterplots are also called points plots and bubble plots. They use the point geom."
 ```
 
@@ -264,7 +262,7 @@ What happens if you make a scatterplot of `class` vs `drv`. Try it. Why is the p
 ```
 
 ```{r scatterplot2-check}
-"Nice job! `class` and `drv` are both categorical variables. As a result, points can only appear at certain values, where many points overlap each other. You have no idea how many points fall on top of each other at each location. Experiment with geom_count() to find a better solution."
+"`class` and `drv` are both categorical variables. As a result, points can only appear at certain values, where many points overlap each other. You have no idea how many points fall on top of each other at each location. Experiment with geom_count() to find a better solution."
 ```
 
 
@@ -319,13 +317,13 @@ Let's give this a try. Fill in the blank piece of code below with `color = class
 **Hint:** Be sure to remove all of the underlines and hashtags from the code.
 </div>
 
-```{r aesthetics-solution}
+```{r aesthetics-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
 ```{r aesthetics-check}
-"Great Job! You can now tell which class of car each point represents by examining the color of the point."
+"You can now tell which class of car each point represents by examining the color of the point."
 ```
 
 ### And the answer is...
@@ -355,13 +353,13 @@ ggplot(data = mpg) +
 **Hint:** If `color` controls the _aesthetic_, what word do you suppose controls the _size_ aesthetic?
 </div>
 
-```{r size-solution}
+```{r size-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, size = class))
 ```
 
 ```{r size-check}
-"Great Job! Now the size of a point represents its class. Did you notice the warning message? ggplot2 gives us a warning here because mapping an unordered variable (class) to an ordered aesthetic (size) is not a good idea."
+"Now the size of a point represents its class. Did you notice the warning message? ggplot2 gives us a warning here because mapping an unordered variable (class) to an ordered aesthetic (size) is not a good idea."
 ```
 
 ### alpha
@@ -377,13 +375,13 @@ ggplot(data = mpg) +
 **Hint:** If `color` controls the _aesthetic_, what word do you suppose controls the _alpha_ aesthetic?
 </div>
 
-```{r alpha-solution}
+```{r alpha-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 ```
 
 ```{r alpha-check}
-"Great Job! If you look closely, you can spot something subtle: many locations contain multiple points stacked on top of each other (alpha is additive so multiple transparent points will appear opaque)."
+"If you look closely, you can spot something subtle: many locations contain multiple points stacked on top of each other (alpha is additive so multiple transparent points will appear opaque)."
 ```
 
 ### Shape
@@ -399,13 +397,13 @@ ggplot(data = mpg) +
 **Hint:** If `color` controls the _aesthetic_, what word do you suppose controls the _shape_ aesthetic?
 </div>
 
-```{r shape-solution}
+```{r shape-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
 
 ```{r shape-check}
-"Good work! What happened to the SUVs? ggplot2 will only use six shapes at a time. By default, additional groups will go unplotted when you use the shape aesthetic. So only use it when you have fewer than seven groups."
+"What happened to the SUVs? ggplot2 will only use six shapes at a time. By default, additional groups will go unplotted when you use the shape aesthetic. So only use it when you have fewer than seven groups."
 ```
 
 ### Exercise 1
@@ -425,7 +423,7 @@ ggplot(data = mpg) +
 ```
 
 ```{r cty-check}
-"Very nice! ggplot2 treats continuous and categorical variables differently. Noteably, ggplot2 supplies a blue gradient when you map a continuous variable to color, and ggplot2 will not map continuous variables to shape."
+"ggplot2 treats continuous and categorical variables differently. Noteably, ggplot2 supplies a blue gradient when you map a continuous variable to color, and ggplot2 will not map continuous variables to shape."
 ```
     
 ### Exercise 2
@@ -438,7 +436,7 @@ ggplot(data = mpg) +
 ```
 
 ```{r multiple-check}
-"Very nice! ggplot2 can map the same variable to multiple aesthetics."
+"ggplot2 can map the same variable to multiple aesthetics."
 ```
     
 <div id="multiple-hint">
@@ -455,7 +453,7 @@ ggplot(data = mpg) +
 ```
 
 ```{r nonvar-check}
-"Good job! ggplot2 will map the aesthetic to the results of the expression. Here, ggplot2 mapped the color of each point to TRUE or FALSE based on whther the point's `displ` value was less than five."
+"ggplot2 will map the aesthetic to the results of the expression. Here, ggplot2 mapped the color of each point to TRUE or FALSE based on whther the point's `displ` value was less than five."
 ```
 
 ### Setting aesthetics
@@ -499,13 +497,13 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
 ```
 
-```{r e4-solution}
+```{r e4-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
 ```{r e4-check}
-"Good job! Putting an aesthetic in the wrong location is one of the most common graphing errors. Sometimes it helps to think of legends. If you will need a legend to understand what the color/shape/etc. means, then you should probably put the aesthetic inside `aes()` --- ggplot2 will build a legend for every aesthetic mapped here. If the aesthetic has no meaning and is just... well, aesthetic, then set it outside of `aes()`."
+"Putting an aesthetic in the wrong location is one of the most common graphing errors. Sometimes it helps to think of legends. If you will need a legend to understand what the color/shape/etc. means, then you should probably put the aesthetic inside `aes()` --- ggplot2 will build a legend for every aesthetic mapped here. If the aesthetic has no meaning and is just... well, aesthetic, then set it outside of `aes()`."
 ```
 
 
@@ -518,6 +516,7 @@ Once you map a variable to an aesthetic, ggplot2 takes care of the rest. It sele
 You've experimented with the most common aesthetics for points: `x`, `y`, `color`, `size`, `alpha` and `shape`. Each geom uses its own set of aesthetics (you wouldn't expect a line to have a shape, for example). To find out which aesthetics a geom uses, open its help page, e.g. `?geom_line`.
 
 This raises a new question that we've only brushed over: what is a geom?
+
 
 ## Geometric objects
 
@@ -541,13 +540,12 @@ As we see above, you can use different geoms to plot the same data. The plot on 
 ### Geom functions
 
 To change the geom in your plot, change the geom function that you add to `ggplot()`. For example, take this code which makes the plot on the left (above), and change `geom_point()` to `geom_smooth()`. What do you get? 
-
 ```{r geom, exercise = TRUE}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-```{r geom-solution}
+```{r geom-solution, exercise.reveal_solution = TRUE}
 # right
 ggplot(data = mpg) + 
   geom_smooth(mapping = aes(x = displ, y = hwy))

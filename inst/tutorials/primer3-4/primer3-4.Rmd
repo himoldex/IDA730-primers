@@ -32,7 +32,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include = FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -124,9 +124,10 @@ ggplot(data = diamonds) +
 ```
 
 ```{r r3, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r3-solution}
+```{r r3-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = cut, y = price))
 ```
@@ -147,7 +148,7 @@ ggplot(data = diamonds) +
                outlier.fill = "white", outlier.stroke = 0.25)
 ```
 
-```{r outliers-solution}
+```{r outliers-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = cut, y = price), outlier.alpha = 0)
 ```
@@ -214,12 +215,12 @@ continuous_vector
 continuous_vector
 ```
 
-```{r cut-solution}
+```{r cut-solution, exercise.reveal_solution = TRUE}
 cut_width(continuous_vector, width = 2)
 ```
 
 ```{r cut-check}
-"Good job! Now let's apply the cut functions to our graph."
+"Now let's apply the cut functions to our graph."
 ```
 
 ### Exercise 4 - Apply a cut function
@@ -233,13 +234,13 @@ ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = carat, y = price, group = cut_interval(carat, n = 2)))
 ```
 
-```{r r4-solution}
+```{r r4-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = carat, y = price, group = cut_width(carat, width = 0.25)))
 ```
 
 ```{r r4-check}
-"Good job! You can now see a relationship between price and carat. You could also make a scatterplot of these variables, but in this case, it would be a black mass of 54,000 data points."
+"You can now see a relationship between price and carat. You could also make a scatterplot of these variables, but in this case, it would be a black mass of 54,000 data points."
 ```
 
 ### coord_flip()
@@ -263,14 +264,14 @@ ggplot(data = mpg) +
   geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-```{r r5-solution}
+```{r r5-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_boxplot(mapping = aes(x = class, y = hwy)) +
   coord_flip()
 ```
 
 ```{r r5-check}
-"Good job! `coord_flip()` is an example of a new coordinate system. You'll learn much more about ggplot2 coordinate systems in a later tutorial."
+"`coord_flip()` is an example of a new coordinate system. You'll learn much more about ggplot2 coordinate systems in a later tutorial."
 ```
 
 
@@ -290,15 +291,14 @@ ggplot(data = mpg) +
                dotsize = 0.5, binwidth = 1)
 ```
 
-```{r r6-solution}
+```{r r6-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_dotplot(mapping = aes(x = class, y = hwy), binaxis = "y", 
                dotsize = 0.5, binwidth = 1, stackdir = "center")
 ```
 
 ```{r r6-check}
-'Good job! When you set `stackdir = "center"`, `geom_dotplot()` arranges each row of dots symmetrically around the $x$ value. This layout will help you understand the next geom.
-As in the histogram tutorial, it takes a lot of tweaking to make a dotplot look right. As a result, I tend to only use them when I want to make a point.'
+'When you set `stackdir = "center"`, `geom_dotplot()` arranges each row of dots symmetrically around the $x$ value. This layout will help you understand the next geom. As in the histogram tutorial, it takes a lot of tweaking to make a dotplot look right. As a result, I tend to only use them when I want to make a point.'
 ```
 
 ### geom_violin()
@@ -314,13 +314,13 @@ ggplot(data = mpg) +
   geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-```{r r7-solution}
+```{r r7-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_violin(mapping = aes(x = class, y = hwy))
 ```
 
 ```{r r7-check}
-'Good job! Another way to interpret a violin plot is to mentally "push" the width of each violin all to one side (so the other side is a straight line). The result would be a density (e.g. `geom_density()`) turned on its side for each distribution).'
+'Another way to interpret a violin plot is to mentally "push" the width of each violin all to one side (so the other side is a straight line). The result would be a density (e.g. `geom_density()`) turned on its side for each distribution).'
 ```
 
 ### Exercise 7 - Violin plots
@@ -334,13 +334,13 @@ ggplot(data = mpg) +
   geom_violin(mapping = aes(x = class, y = hwy))
 ```
 
-```{r r8-solution}
+```{r r8-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_violin(mapping = aes(x = class, y = hwy), draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
 ```{r r8-check}
-'Good job! Can you predict how you would use `draw_quantiles` to draw a horizontal line at a different percentile, like the 60th percentile?.'
+'Can you predict how you would use `draw_quantiles` to draw a horizontal line at a different percentile, like the 60th percentile?.'
 ```
 
 ## Counts
@@ -361,9 +361,10 @@ ggplot(data = diamonds) +
 Use `geom_count()` to plot the interaction of the `cut` and `clarity` variables in the `diamonds` data set.
 
 ```{r r9, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r9-solution}
+```{r r9-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_count(mapping = aes(x = cut, y = clarity))
 ```
@@ -408,9 +409,10 @@ Practice the method above by re-creating the heat map below.
 ```
 
 ```{r r10, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r10-solution}
+```{r r10-solution, exercise.reveal_solution = TRUE}
  diamonds %>% 
    count(color, cut) %>% 
    ggplot(mapping = aes(x = color, y = cut)) +

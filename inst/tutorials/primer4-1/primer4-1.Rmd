@@ -54,7 +54,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -183,7 +183,7 @@ First with `table1`:
 mean(table1$cases)
 ```
 
-```{r ex4-solution}
+```{r ex4-solution, exercise.reveal_solution = TRUE}
 mean(table1$population)
 ```
 
@@ -193,7 +193,7 @@ Then with `table2`:
 mean(table2$count[c(1, 3, 5, 7, 9, 11)])
 ```
 
-```{r ex5-solution}
+```{r ex5-solution, exercise.reveal_solution = TRUE}
 mean(table2$count[c(2, 4, 6, 8, 10, 12)])
 ```
 
@@ -214,9 +214,10 @@ table2$count[c(1, 3, 5, 7, 9, 11)] / table2$count[c(2, 4, 6, 8, 10, 12)]
 But it is easy to do with tidy `table1`. Give it a try below:
 
 ```{r ex6, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex6-solution}
+```{r ex6-solution, exercise.reveal_solution = TRUE}
 table1$cases / table1$population
 ```
 
@@ -233,7 +234,6 @@ The tidy data format works so well for R because it aligns the structure of your
 ```{r out.width = "90%"}
 knitr::include_graphics("vectorized.png")
 ```
-
 
 As a result, most functions in R---and every function in the tidyverse---will expect your data to be organized into a tidy format. (You may have noticed above that we could use dplyr functions to work on `table1`, but not on `table2`).
 
@@ -327,7 +327,7 @@ The result should contain three columns: `country`, `year`, and `cases`. Begin b
 cases %>% gather(key = "year", value = "n", 2, 3, 4)
 ```
 
-```{r ex7-solution}
+```{r ex7-solution, exercise.reveal_solution = TRUE}
 table4a %>% gather(key = "year", value = "cases", 2, 3)
 ```
 
@@ -357,14 +357,15 @@ table4b
 ```
 
 ```{r ex8, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex8-solution}
+```{r ex8-solution, exercise.reveal_solution = TRUE}
 table4b %>% gather(key = "year", value = "population", -country)
 ```
 
 ```{r ex8-check}
-"Good job! Together the tidy versions of table4a and table4b repeat the information in table1. In Join Data Sets you will learn how to combine them back into a single data set."
+"Together the tidy versions of table4a and table4b repeat the information in table1. In Join Data Sets you will learn how to combine them back into a single data set."
 ```
 
 ### Converting output
@@ -375,12 +376,12 @@ If you looked closely at your results in the previous exercises, you may have no
 table4b %>% gather(key = "year", value = "population", -country)
 ```
 
-```{r ex9-solution}
+```{r ex9-solution, exercise.reveal_solution = TRUE}
 table4b %>% gather(key = "year", value = "population", -country, convert = TRUE)
 ```
 
 ```{r ex9-check}
-"Good Job! Now <int> appears under the year column, which means that R has stored the years as integers instead of character strings. Integers are one of R's two numeric data types, along with doubles."
+"Now <int> appears under the year column, which means that R has stored the years as integers instead of character strings. Integers are one of R's two numeric data types, along with doubles."
 ```
 
 You can ask R to convert each new column to an appropriate data type by adding `convert = TRUE` to the `gather()` call. R will inspect the contents of the columns to choose the most likely data type. Give it a try in the code above! 
@@ -401,14 +402,15 @@ cases2
 To tidy this data, you would want to keep the first three columns as they are. Can you tidy this data with `gather()`? Yes, an you already know how. Think about the problem and then tidy `cases2` into a data set with five columns: `city`, `country`, `continent`, `year`, and `cases`.
 
 ```{r ex10, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex10-solution}
+```{r ex10-solution, exercise.reveal_solution = TRUE}
 cases2 %>% gather(key = "year", value = "cases", 4, 5, 6)
 ```
 
 ```{r ex10-check}
-"Great job! Now let's look at how to tidy another common type of untidy data."
+"Now let's look at how to tidy another common type of untidy data."
 ```
 
 ## Spreading columns
@@ -475,14 +477,15 @@ table2
 
 
 ```{r ex11, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex11-solution}
+```{r ex11-solution, exercise.reveal_solution = TRUE}
 table2 %>% spread(key = type, value = count)
 ```
 
 ```{r ex11-check}
-"Good job! You now posses two complementary tools for reshaping the layout of data. By iterating between gather() and spread() you can rearrange the values of any data set into many different configurations."
+"You now posses two complementary tools for reshaping the layout of data. By iterating between gather() and spread() you can rearrange the values of any data set into many different configurations."
 ```
 
 
@@ -537,16 +540,17 @@ To make the data displayed in the plot above, I first grouped babynames by `year
 Use dplyr functions to recreate this process in the chunk below.
 
 ```{r ex12, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex12-solution}
+```{r ex12-solution, exercise.reveal_solution = TRUE}
 babynames %>%
   group_by(year, sex) %>% 
   summarise(total = sum(n))
 ```
 
 ```{r ex12-check}
-"Good job! Now that we have the data, let's recreate the plot."
+"Now that we have the data, let's recreate the plot."
 ```
 
 ### Review - Make the plot
@@ -567,7 +571,7 @@ babynames %>%
   summarise(total = sum(n))
 ```
 
-```{r ex13-solution}
+```{r ex13-solution, exercise.reveal_solution = TRUE}
 babynames %>%
   group_by(year, sex) %>% 
   summarise(total = sum(n)) %>% 
@@ -576,7 +580,7 @@ babynames %>%
 ```
 
 ```{r ex13-check}
-"Good job! You can see that the data shows that less boys than girls were born for the years prior to 1936, and less girls than boys for the years after 1936."
+"You can see that the data shows that less boys than girls were born for the years prior to 1936, and less girls than boys for the years after 1936."
 ```
 
 ### A better way to look at the data
@@ -620,7 +624,7 @@ babynames %>%
   summarise(total = sum(n))
 ```
 
-```{r ex14-solution}
+```{r ex14-solution, exercise.reveal_solution = TRUE}
 babynames %>%
   group_by(year, sex) %>% 
   summarise(total = sum(n)) %>%

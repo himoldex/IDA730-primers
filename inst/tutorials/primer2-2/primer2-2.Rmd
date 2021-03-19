@@ -37,7 +37,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -81,12 +81,12 @@ But before you do, you will need to trim down `babynames`. At the moment, there 
 
 ### An example
 
-To see what I mean, consider how I made the plot above: I began with the entire data set, which if plotted as a scatterplot would've looked like this.
+It is natural to begin with the entire data set, which if plotted as a scatterplot would've looked like this.
 
 ```{r out.width = "60%", cached = TRUE}
-ggplot(babynames) +
-  geom_point(aes(x = year, y = prop)) +
-  labs(title = "Popularity of every name in the data set")
+#ggplot(babynames) +
+#  geom_point(aes(x = year, y = prop)) +
+#  labs(title = "Popularity of every name in the data set")
 ```
 
 I then narrowed the data to just the rows that contain my name, before plotting the data with a line geom. Here's how the rows with just my name look as a scatterplot.
@@ -131,8 +131,7 @@ Use the example below to get a feel for `select()`. Can you extract just the `na
 select(babynames, name, sex)
 ```
 
-```{r select-1-solution}
-select(babynames, name)
+```{r select-1-solution, exercise.reveal_solution = TRUE}
 select(babynames, name, year)
 select(babynames, year, sex, name, n)
 ```
@@ -210,7 +209,7 @@ See if you can use the logical operators to manipulate our code below to show:
 filter(babynames, name == "Sea")
 ```
 
-```{r filter-0-solution}
+```{r filter-0-solution, exercise.reveal_solution = TRUE}
 filter(babynames, prop >= 0.08)
 filter(babynames, name == "Khaleesi")
 filter(babynames, is.na(n))
@@ -227,12 +226,12 @@ filter(babynames, name = "Sea")
 ```{r filter-1a, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r filter-1a-solution}
+```{r filter-1a-solution, exercise.reveal_solution = TRUE}
 filter(babynames, name == "Sea")
 ```
 
 ```{r filter-1a-check}
-"Good Job! Remember to use == instead of = when testing for equality."
+"Remember to use == instead of = when testing for equality."
 ```
 
 ```{r eval = FALSE, echo = TRUE}
@@ -242,12 +241,12 @@ filter(babynames, name == Sea)
 ```{r filter-1b, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r filter-1b-solution}
+```{r filter-1b-solution, exercise.reveal_solution = TRUE}
 filter(babynames, name == "Sea")
 ```
 
 ```{r filter-1b-check}
-"Good Job! As written this code would check that name is equal to the contents of the object named Sea, which does not exist."
+"As written this code would check that name is equal to the contents of the object named Sea, which does not exist."
 ```
 
 ### Two mistakes - Recap
@@ -293,7 +292,7 @@ Use Boolean operators to alter the code chunk below to return only the rows that
 filter(babynames, name == "Sea" | name == "Anemone")
 ```
 
-```{r filter-2-solution}
+```{r filter-2-solution, exercise.reveal_solution = TRUE}
 filter(babynames, name == "Sea", sex == "F")
 filter(babynames, n == 5 | n == 6, year == 1880)
 filter(babynames, name %in% c("Acura", "Lexus", "Yugo"))
@@ -310,12 +309,12 @@ filter(babynames, 10 < n < 20)
 ```{r filter-3, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r filter-3-solution}
+```{r filter-3-solution, exercise.reveal_solution = TRUE}
 filter(babynames, 10 < n, n < 20)
 ```
 
 ```{r filter-3-check}
-"Good job! You cannot combine two logical tests in R without using a Boolean operator (or at least a comma between filter arguments)."
+"You cannot combine two logical tests in R without using a Boolean operator (or at least a comma between filter arguments)."
 ```
 
 ```{r eval = FALSE, echo = TRUE}
@@ -325,12 +324,12 @@ filter(babynames, n == 5 | n == 6 | n == 7 | n == 8 | n == 9)
 ```{r filter-4, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r filter-4-solution}
+```{r filter-4-solution, exercise.reveal_solution = TRUE}
 filter(babynames, n %in% c(5, 6, 7, 8, 9))
 ```
 
 ```{r filter-4-check}
-"Good job! Although the first code works, you should make your code more concise by collapsing multiple or statements into an %in% statement when possible."
+"Although the first code works, you should make your code more concise by collapsing multiple or statements into an %in% statement when possible."
 ```
 
 ### Two more common mistakes - Recap
@@ -352,12 +351,12 @@ Use the code chunk below to arrange babynames by `n`. Can you tell what the smal
 ```{r arrange-1, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r arrange-1-solution}
+```{r arrange-1-solution, exercise.reveal_solution = TRUE}
 arrange(babynames, n)
 ```
 
 ```{r arrange-1-check}
-"Good job! The compiler of `babynames` used 5 as a cutoff; a name only made it into babynames for a given year and gender if it was used for five or more children."
+"The compiler of `babynames` used 5 as a cutoff; a name only made it into babynames for a given year and gender if it was used for five or more children."
 ```
 
 ### Tie breakers
@@ -382,7 +381,7 @@ Add a `desc()` to the code below to display the most popular name for 2017 (the 
 arrange(babynames, year, desc(prop))
 ```
 
-```{r arrange-3-solution}
+```{r arrange-3-solution, exercise.reveal_solution = TRUE}
 arrange(babynames, desc(year), desc(prop))
 ```
 
@@ -395,7 +394,7 @@ Which name was the most popular for a single gender in a single year? In the cod
 ```{r arrange-4, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r arrange-4-solution}
+```{r arrange-4-solution, exercise.reveal_solution = TRUE}
 arrange(babynames, desc(prop))
 ```
 
@@ -404,7 +403,7 @@ Now arrange `babynames` so that the row with the largest value of `n` appears at
 ```{r arrange-5, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r arrange-5-solution}
+```{r arrange-5-solution, exercise.reveal_solution = TRUE}
 arrange(babynames, desc(n))
 # The number of children represented by each proportion grew 
 # over time as the population grew 
@@ -471,7 +470,7 @@ Try to write your pipe without copying and pasting the code from above.
 ```{r pipe-1, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r pipe-1-solution}
+```{r pipe-1-solution, exercise.reveal_solution = TRUE}
 babynames %>% 
   filter(year == 2017, sex == "F") %>% 
   select(name, n) %>% 
@@ -491,7 +490,7 @@ Note that the first argument of `ggplot()` takes a data frame, which means you c
 ```{r your-name-1, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r your-name-1-solution}
+```{r your-name-1-solution, exercise.reveal_solution = TRUE}
 babynames %>% 
   filter(name == "Garrett", sex == "M") %>% 
   select(year, prop) %>% 

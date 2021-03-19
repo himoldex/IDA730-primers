@@ -33,7 +33,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -72,7 +72,7 @@ mpg %>%
   ggplot()
 ```
 
-```{r r1-solution}
+```{r r1-solution, exercise.reveal_solution = TRUE}
 mpg %>% 
   group_by(class) %>% 
   summarise(mean_cty = mean(cty), mean_hwy = mean(hwy)) %>% 
@@ -81,7 +81,7 @@ mpg %>%
 ```
 
 ```{r r1-check}
-"Good job! It can be tricky to remember when to use %>% and when to use +. Use %>% to add one complete step to a pipe of code. Use + to add one more line to a ggplot2 call."
+"It can be tricky to remember when to use %>% and when to use +. Use %>% to add one complete step to a pipe of code. Use + to add one more line to a ggplot2 call."
 ```
 
 
@@ -99,7 +99,7 @@ mpg %>%
     geom_point(mapping = aes(x = mean_cty, y = mean_hwy))
 ```
 
-```{r r2-solution}
+```{r r2-solution, exercise.reveal_solution = TRUE}
 mpg %>% 
   group_by(class) %>% 
   summarise(mean_cty = mean(cty), mean_hwy = mean(hwy)) %>% 
@@ -113,7 +113,7 @@ mpg %>%
 ```
 
 ```{r r2-check}
-"Good job! geom_text() replaces each point with a piece of text supplied by the label aesthetic. geom_label replaces each point with a textbox. Notice that some pieces of text overlap each other, and others run off the page. We'll soon look at a way to fix this."
+"geom_text() replaces each point with a piece of text supplied by the label aesthetic. geom_label replaces each point with a textbox. Notice that some pieces of text overlap each other, and others run off the page. We'll soon look at a way to fix this."
 ```
 
 
@@ -153,7 +153,7 @@ mpg %>%
   ggplot() 
 ```
 
-```{r r3-solution}
+```{r r3-solution, exercise.reveal_solution = TRUE}
 mpg %>% 
   group_by(class) %>% 
   summarise(mean_cty = mean(cty), mean_hwy = mean(hwy)) %>% 
@@ -162,7 +162,7 @@ mpg %>%
 ```
 
 ```{r r3-check}
-"Good job! Now let's look at a way to make geom_smooth() much more useful."
+"Now let's look at a way to make geom_smooth() much more useful."
 ```
 
 ## Layers
@@ -186,7 +186,7 @@ mpg %>%
 ```
 
 ```{r r4-check}
-"Good job! You can add as many geom functions as you like to a plot; but, in practice, a plot will become hard to interpret if it contains more than two or three geoms."
+"You can add as many geom functions as you like to a plot; but, in practice, a plot will become hard to interpret if it contains more than two or three geoms."
 ```
 
 ### geom_label_repel()
@@ -204,7 +204,7 @@ mpg %>%
     geom_smooth(mapping = aes(x = mean_cty, y = mean_hwy), method = lm)
 ```
 
-```{r r5-solution}
+```{r r5-solution, exercise.reveal_solution = TRUE}
 mpg %>% 
   group_by(class) %>% 
   summarise(mean_cty = mean(cty), mean_hwy = mean(hwy)) %>% 
@@ -215,7 +215,7 @@ mpg %>%
 ```
 
 ```{r r5-check}
-"Good job! The ggrepel package also provides geom_text_repel(), which is an analog for geom_text()."
+"The ggrepel package also provides geom_text_repel(), which is an analog for geom_text()."
 ```
 
 ### Code duplication
@@ -271,7 +271,7 @@ mpg %>%
     geom_label_repel(mapping = aes(x = mean_cty, y = mean_hwy, label = class))
 ```
 
-```{r r6-solution}
+```{r r6-solution, exercise.reveal_solution = TRUE}
 mpg %>% 
   group_by(class) %>% 
   summarise(mean_cty = mean(cty), mean_hwy = mean(hwy)) %>% 
@@ -282,7 +282,7 @@ mpg %>%
 ```
 
 ```{r r6-check}
-"Good job! Remember that not every mapping should be a global mapping. Here, only geom_label_repel uses the label aesthetic. Hence, it should remain a local aesthetic to avoid unintended side effects, warnings, or errors."
+"Remember that not every mapping should be a global mapping. Here, only geom_label_repel uses the label aesthetic. Hence, it should remain a local aesthetic to avoid unintended side effects, warnings, or errors."
 ```
 
 
@@ -297,9 +297,10 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ```
 
 ```{r r7, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r7-solution}
+```{r r7-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point(mapping = aes(color = class)) +
   geom_smooth()
@@ -322,11 +323,11 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point(data = mpg2, color = "red", size = 2)
 ```
 
-```{r r8, exercise = TRUE, }
+```{r r8, exercise = TRUE }
 mpg2 <- filter(mpg, class == "2seater")
 ```
 
-```{r r8-solution}
+```{r r8-solution, exercise.reveal_solution = TRUE}
 mpg2 <- filter(mpg, class == "2seater")
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point() +
@@ -349,9 +350,10 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ```
 
 ```{r r9, exercise = TRUE}
+# type code below thisl line
 ```
 
-```{r r9-solution}
+```{r r9-solution, exercise.reveal_solution = TRUE}
 mpg3 <- filter(mpg, hwy > 40)
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point() +
@@ -398,16 +400,17 @@ p
 In the chunk below, use the `faithful` dataset to create a scatterplot that has the `waiting` variable on the $x$ axis and the `eruptions` variable on the $y$ axis. Use `geom_rug()` to add a rug plot to the scatterplot. Like `geom_point()`, `geom_rug()` requires x and y aesthetic mappings.
 
 ```{r r10, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r10-solution}
+```{r r10-solution, exercise.reveal_solution = TRUE}
 ggplot(data = faithful, mapping = aes(x = waiting, y = eruptions)) +
   geom_point() +
   geom_rug()
 ```
 
 ```{r r10-check}
-'Good job! Pass geom_rug() the parameter sides = "l" to limit the rug plot to just the left-hand axis (y) or sides = "b" to limit the rug plot to just the bottom axis (x).'
+'Pass geom_rug() the parameter sides = "l" to limit the rug plot to just the left-hand axis (y) or sides = "b" to limit the rug plot to just the bottom axis (x).'
 ```
 
 
@@ -422,13 +425,13 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = class, y = hwy))
 ```
 
-```{r r11-solution}
+```{r r11-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_jitter(mapping = aes(x = class, y = hwy))
 ```
 
 ```{r r11-check}
-"Good job! You can also jitter in only a single direction. To turn off jittering in the x direction set width = 0 in geom_jitter(). To turn off jittering in the y direction, set height = 0." 
+"You can also jitter in only a single direction. To turn off jittering in the x direction set width = 0 in geom_jitter(). To turn off jittering in the y direction, set height = 0." 
 ```
 
 
@@ -439,16 +442,17 @@ ggplot(data = mpg) +
 Use the chunk below to create a boxplot of the previous graph. Arrange for the outliers to have an alpha of 0, which will make them completely transparent. Then add a layer of points that are jittered in $y$ direction, but not the $x$ direction.
 
 ```{r r12, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r12-solution}
+```{r r12-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   geom_boxplot(outlier.alpha = 0) +
   geom_jitter(width = 0)
 ```
 
 ```{r r12-check}
-"Good job! If you like, you can make the boxplots more visible by setting the alpha parameter of geom_jitter() to a low number, e.g. geom_jitter(mapping = aes(x = class, y = hwy), width = 0, alpha = 0.5)"
+"If you like, you can make the boxplots more visible by setting the alpha parameter of geom_jitter() to a low number, e.g. geom_jitter(mapping = aes(x = class, y = hwy), width = 0, alpha = 0.5)"
 ```
 
 
@@ -520,14 +524,15 @@ In other words, log-log plots unbend power relationships into straight lines. Mo
 Try this by using the diamonds dataset to plot `log(carat)` against `log(price)`.
 
 ```{r r13, exercise = TRUE}
+# type code below this line
 ```
-```{r r13-solution}
+```{r r13-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_point(mapping = aes(x = log(carat), y = log(price))) 
 ```
 
 ```{r r13-check}
-"Good job! Now let's look at how you can do the same transformation, and others as well with a coord function."
+"Now let's look at how you can do the same transformation, and others as well with a coord function."
 ```
 
 ### coord_trans()

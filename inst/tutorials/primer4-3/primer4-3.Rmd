@@ -77,7 +77,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -124,9 +124,10 @@ The `carrier` variable of flights uses a carrier code to identify which airline 
 Use dplyr functions in the code chunk below to enact this strategy. Which airlines have the largest average delays?
 
 ```{r ex1, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex1-solution}
+```{r ex1-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   drop_na(arr_delay) %>% 
   group_by(carrier) %>% 
@@ -135,7 +136,7 @@ flights %>%
 ```
 
 ```{r ex1-check}
-"Good job! You've calculated the average delay per airline, but the results are difficult to interpret. We don't know which codes are associated with which airlines."
+"You've calculated the average delay per airline, but the results are difficult to interpret. We don't know which codes are associated with which airlines."
 ```
 
 ### airlines
@@ -219,12 +220,12 @@ knitr::include_graphics("right-join.png")
 band %>% left_join(instrument, by = "name")
 ```
 
-```{r ex4-solution}
+```{r ex4-solution, exercise.reveal_solution = TRUE}
 instrument %>% left_join(band, by = "name")
 ```
 
 ```{r ex4-check}
-"Good Job! Since right and left joins are analagous, you can acheive the same results by switching the order of the data sets in a left join. Notice that this will affect the column order."
+"Since right and left joins are analagous, you can acheive the same results by switching the order of the data sets in a left join. Notice that this will affect the column order."
 ```
 
 ### full_join()
@@ -291,7 +292,7 @@ flights %>%
   arrange(desc(avg_delay))
 ```
 
-```{r ex7-solution}
+```{r ex7-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   drop_na(arr_delay) %>% 
   group_by(carrier) %>% 
@@ -302,7 +303,7 @@ flights %>%
 ```
 
 ```{r ex7-check}
-"Great Job! It is now easy to see that Frontier Airlines, AirTran, and ExpressJet had the longest average delays departing New York City in 2013."
+"It is now easy to see that Frontier Airlines, AirTran, and ExpressJet had the longest average delays departing New York City in 2013."
 ```
 
 ### nycflights13 data sets
@@ -435,7 +436,7 @@ flights %>%
   arrange(desc(avg_delay))
 ```
 
-```{r ex10-solution}
+```{r ex10-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   drop_na(arr_delay) %>%
   group_by(dest) %>%
@@ -446,7 +447,7 @@ flights %>%
 ```
 
 ```{r ex10-check}
-"Good Job! Flights from NYC to Columbia, South Carolina seem to have arrived particularly late in 2013. At the other end of the list, far off destinations in Alaska and Hawaii tended to arrive ahead of schedule."
+"Flights from NYC to Columbia, South Carolina seem to have arrived particularly late in 2013. At the other end of the list, far off destinations in Alaska and Hawaii tended to arrive ahead of schedule."
 ```
 
 ### Mutating Joins Recap
@@ -527,15 +528,16 @@ Now let's put these three functions to work.
 Use `distinct()` below to determine how many airports New York City connects to. This will be the number of distinct destinations in the `flights` data set. First create a data set with these destinations, then look for the number of rows in the data (it appears beneath the table in the results).
 
 ```{r ex14, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex14-solution}
+```{r ex14-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   distinct(dest)
 ```
 
 ```{r ex14-check}
-"Good job! There are 105 distinct destinations in the flights data set."
+"There are 105 distinct destinations in the flights data set."
 ```
 
 ### Exercise - Replace codes with names
@@ -547,7 +549,7 @@ flights %>%
   distinct(dest)
 ```
 
-```{r ex15-solution}
+```{r ex15-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   distinct(dest) %>% 
   left_join(airports, by = c("dest" = "faa")) %>% 
@@ -555,7 +557,7 @@ flights %>%
 ```
 
 ```{r ex15-check}
-"Good job! But uh-oh. The third result is an NA. What's going on?"
+"The third result is an NA. What's going on?"
 ```
 
 ### NAs
@@ -578,7 +580,7 @@ flights %>%
   distinct(dest)
 ```
 
-```{r ex16-solution}
+```{r ex16-solution, exercise.reveal_solution = TRUE}
 flights %>%
   distinct(dest) %>% 
   anti_join(airports, by = c("dest" = "faa"))
@@ -603,13 +605,13 @@ Let's gauge how this affects our data. Use the code chunk below to return all of
 ```{r ex17, exercise = TRUE}
 ```
 
-```{r ex17-solution}
+```{r ex17-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   semi_join(airports, by = c("dest" = "faa")) 
 ```
 
 ```{r ex17-check}
-"Good job! Most of the rows in flights are associated with a known airport."
+"Most of the rows in flights are associated with a known airport."
 ```
 
 ### semi_join() for filtering
@@ -637,9 +639,10 @@ criteria
 Then you can run a `semi_join()` against the data set. Use `criteria` and `semi_join()` below to return just the flights that left in January on JetBlue or in February on Southwest.
 
 ```{r ex18, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex18-solution}
+```{r ex18-solution, exercise.reveal_solution = TRUE}
 flights %>% 
   semi_join(criteria, by = c("month", "carrier"))
 ```
@@ -733,14 +736,14 @@ bands <- list(df1 = band,
 bands %>% bind_rows()
 ```
 
-```{r ex21-solution}
+```{r ex21-solution, exercise.reveal_solution = TRUE}
 bands <- list(df1 = band, 
               df2 = band2)
 bands %>% bind_rows(.id = "origin")
 ```
 
 ```{r ex21-check}
-"Good Job! You can add more than two data sets to your list if you wish to bind together multiple data sets at once."
+"You can add more than two data sets to your list if you wish to bind together multiple data sets at once."
 ```
 
 

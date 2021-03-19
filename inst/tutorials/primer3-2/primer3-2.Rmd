@@ -32,7 +32,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -98,9 +98,10 @@ pressure
 Use the code chunk below to plot the distribution of the `color` variable in the `diamonds` data set, which comes in the ggplot2 package.
 
 ```{r r1, exercise = TRUE}
+# type your code below this line
 ```
 
-```{r r1-solution}
+```{r r1-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color))
 ```
@@ -142,7 +143,7 @@ ggplot(data = pressure) +
   geom_bar(mapping = aes(x = temperature, y = pressure))
 ```
 
-```{r r3-solution}
+```{r r3-solution, exercise.reveal_solution = TRUE}
 ggplot(data = pressure) +
   geom_col(mapping = aes(x = temperature, y = pressure))
 ```
@@ -153,9 +154,10 @@ ggplot(data = pressure) +
 Recreate the bar graph of `color` from exercise one, but this time first use `count()` to manually compute the heights of the bars. Then use `geom_col()` to plot the results as a bar graph. Does your graph look the same as in exercise one?
 
 ```{r r4, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r4-solution}
+```{r r4-solution, exercise.reveal_solution = TRUE}
 diamonds %>% 
   count(color) %>% 
   ggplot() +
@@ -217,9 +219,10 @@ Notice that width is a _parameter_, not an aesthetic mapping. Hence, you should 
 Create a colored bar chart of the `class` variable from the `mpg` data set, which comes with ggplot2. Map the interior color of each bar to `class`.
 
 ```{r r5, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r5-solution}
+```{r r5-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_bar(mapping = aes(x = class, fill = class))
 ```
@@ -300,10 +303,11 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = clarity), position = "fill", width = 1)
 ```
 
-```{r r6, exercise = TRUE}
+```{r r6, exercise = TRUE, exercise.eval = TRUE, error = TRUE}
+# type your code below this line
 ```
 
-```{r r6-solution}
+```{r r6-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = clarity), position = "fill", width = 1)
 ```
@@ -318,9 +322,10 @@ ggplot(data = diamonds) +
 ```
 
 ```{r r7, exercise = TRUE}
+# type your code below this line
 ```
 
-```{r r7-solution}
+```{r r7-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = cut), position = "dodge")
 ```
@@ -406,7 +411,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = cut))
 ```
 
-```{r facet4-solution}
+```{r facet4-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = cut)) +
   facet_wrap( ~ cut)
@@ -420,11 +425,11 @@ By default, each facet in your plot will share the same $x$ and $y$ ranges. You 
 * `scales = "free_x"` will let the $x$ range of each facet vary, but not the $y$ range
 * `scales = "free_y"` will let the $y$ range of each facet vary, but not the $x$ range. This is a convenient way to compare the shapes of different distributions:
 
-    ```{r}
-    ggplot(data = diamonds) +
-      geom_bar(mapping = aes(x = color, fill = cut)) +
-      facet_wrap( ~ cut, scales = "free_y")
-    ```
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = color, fill = cut)) +
+  facet_wrap( ~ cut, scales = "free_y")
+```
 
 
 ### Recap

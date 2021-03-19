@@ -52,7 +52,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -125,7 +125,7 @@ hurricanes %>%
 ```
 
 ```{r ex1-check}
-"Good job! As with other tidyverse functions, `separate()` returns a modified copy of the orginal data. You will need to save the copy if you wish to use it later."
+"As with other tidyverse functions, `separate()` returns a modified copy of the orginal data. You will need to save the copy if you wish to use it later."
 ```
 
 ### Syntax
@@ -154,7 +154,7 @@ hurricanes %>%
 ```
 
 ```{r ex2-check}
-'Good job! "-" is the only non-alphanumeric character used in our dates, which means that the defaults return the same output as setting sep = "-"'
+'"-" is the only non-alphanumeric character used in our dates, which means that the defaults return the same output as setting sep = "-"'
 ```
 
 ### Separating by position
@@ -178,14 +178,14 @@ hurricanes %>%
   separate(col = date, into = c("year","month","day"))
 ```
 
-```{r ex3-solution}
+```{r ex3-solution, exercise.reveal_solution = TRUE}
 hurricanes %>% 
   separate(col = date, into = c("year","month","day")) %>% 
   separate(col = year, into = c("century", "year"), sep = 2)
 ```
 
 ```{r ex3-check}
-"Good job! Notice that when you separate on a character, separate() removes that character from the results. When you separate on a location, separate() retains all of the characters in the result."
+"Notice that when you separate on a character, separate() removes that character from the results. When you separate on a location, separate() retains all of the characters in the result."
 ```
 
 ### Quiz - What if
@@ -224,13 +224,13 @@ hurricanes %>%
   separate(col = date, into = c("year","month","day"))
 ```
 
-```{r ex6-solution}
+```{r ex6-solution, exercise.reveal_solution = TRUE}
 hurricanes %>% 
   separate(col = date, into = c("year","month","day"), convert = TRUE)
 ```
 
 ```{r ex6-check}
-"Good job! Our columns now contain integers, which will make them easier to manipulate with mathematical operations."
+"Our columns now contain integers, which will make them easier to manipulate with mathematical operations."
 ```
 
 ### Remove
@@ -272,19 +272,20 @@ Notice that the syntax of `unite()` is the inverse of `separate()`:
 
 Use `separate()` and `unite()` to rewrite the dates in hurricanes in the format below:
 
-* month/day/year, e.g., 1/27/2020
+* month/day/year, e.g., 1/27/2021
 
 ```{r ex8, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex8-solution}
+```{r ex8-solution, exercise.reveal_solution = TRUE}
 hurricanes %>%
   separate(date, c("year", "month", "day"), sep = "-") %>%
   unite(col = "date", month, day, year, sep = "/")
 ```
 
 ```{r ex8-check}
-"Good job! Let's push it one step farther."
+"Let's push it one step farther."
 ```
 
 ### Exercise - Separate and Unite 2
@@ -296,9 +297,10 @@ Use the chunk below to:
 3. Use `unite()` to return the results to the original date format. _Hint: you can set `sep = ""` to avoid including a separator character when uniting._
 
 ```{r ex9, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex9-solution}
+```{r ex9-solution, exercise.reveal_solution = TRUE}
 hurricanes %>%
   separate(col = date, c("century", "rest"), sep = 2) %>%
   filter(century == 19) %>% 
@@ -367,15 +369,16 @@ It will take a number of operations to tidy the `who` data set. When you look at
 Let's begin the pipe by removing the redundant variables `iso2` and `iso3` from `who`. In otherwords, let's use a dplyr function to select every column except `iso2` and `iso3`. Recall that there is a way to do this without a large amount of typing.
 
 ```{r ex10, exercise = TRUE}
+# type code below this line
 ```
 
-```{r ex10-solution}
+```{r ex10-solution, exercise.reveal_solution = TRUE}
 who %>% 
   select(-iso2, -iso3)
 ```
 
 ```{r ex10-check}
-"Good job! The - helper becomes very handy when you have 60 column names to deal with!"
+"The - helper becomes very handy when you have 60 column names to deal with!"
 ```
 
 ### A strategy
@@ -399,14 +402,14 @@ who %>%
   select(-iso2, -iso3)
 ```
 
-```{r ex11-solution}
+```{r ex11-solution, exercise.reveal_solution = TRUE}
 who %>%
   select(-iso2, -iso3) %>% 
   gather(key = "codes", value = "n", 3:58)
 ```
 
 ```{r ex11-check}
-"Good job! The codes are easier to work with when they are in their own column."
+"The codes are easier to work with when they are in their own column."
 ```
 
 ### Exercise - Separate
@@ -419,7 +422,7 @@ who %>%
   gather(key = "codes", value = "n", 3:58) 
 ```
 
-```{r ex12-solution}
+```{r ex12-solution, exercise.reveal_solution = TRUE}
 who %>%
   select(-iso2, -iso3) %>% 
   gather(key = "codes", value = "n", 3:58) %>% 
@@ -427,7 +430,7 @@ who %>%
 ```
 
 ```{r ex12-check}
-"Good job! Luckily, it is easy to decompose each code into its components by separating on the _ characters. However, sex and age still appear in the same column."
+"Luckily, it is easy to decompose each code into its components by separating on the _ characters. However, sex and age still appear in the same column."
 ```
 
 ### Exercise - Separate again
@@ -443,7 +446,7 @@ who %>%
   separate(codes, into = c("new", "type", "sexage"), sep = "_")
 ```
 
-```{r ex13-solution}
+```{r ex13-solution, exercise.reveal_solution = TRUE}
 who %>%
   select(-iso2, -iso3) %>% 
   gather(key = "codes", value = "n", 3:58) %>% 
@@ -452,7 +455,7 @@ who %>%
 ```
 
 ```{r ex13-check}
-"Great job! We've almost finished tidying this data set. Let's add some finishing touches."
+"We've almost finished tidying this data set. Let's add some finishing touches."
 ```
 
 ### Exercise - Select
@@ -468,7 +471,7 @@ who %>%
   separate(sexage, into = c("sex", "age"), sep = 1)
 ```
 
-```{r ex14-solution}
+```{r ex14-solution, exercise.reveal_solution = TRUE}
 who %>%
   select(-iso2, -iso3) %>% 
   gather(key = "codes", value = "n", 3:58) %>% 
@@ -478,7 +481,7 @@ who %>%
 ```
 
 ```{r ex14-check}
-"Good job! Now let's turn our attention to the NA's in the n column."
+"Now let's turn our attention to the NA's in the n column."
 ```
 
 ### n
@@ -514,7 +517,7 @@ who %>%
   select(-new)
 ```
 
-```{r ex15-solution}
+```{r ex15-solution, exercise.reveal_solution = TRUE}
 who %>%
   select(-iso2, -iso3) %>% 
   gather(key = "codes", value = "n", 3:58) %>% 
@@ -525,12 +528,12 @@ who %>%
 ```
 
 ```{r ex15-check}
-"Good job! You may have noticed that drop_na(n) does the same thing as filter(!is.na(n)). However, drop_na(n) is easier to read and type."
+"You may have noticed that drop_na(n) does the same thing as filter(!is.na(n)). However, drop_na(n) is easier to read and type."
 ```
 
 ### Recap
 
-Good job! You've wrangled `who` into a tidy, polished data set that is ready to be explored, modelled, and analyzed.
+You've wrangled `who` into a tidy, polished data set that is ready to be explored, modelled, and analyzed.
 
 The difference between the initial and final versions of `who` is drastic, but each step in our pipe imposed a small, logical change. This is by design.
 

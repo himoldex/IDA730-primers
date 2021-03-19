@@ -33,7 +33,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -66,7 +66,7 @@ Click the Next Topic button to begin.
 
 ### Loading babynames
 
-Before we begin, let's learn a little about our data. The `babynames` dataset comes in the **babynames** package. The package is pre-installed for you, just as ggplot2 was pre-installed in the last tutorial. But unlike in the last tutorial, I have not pre-_loaded_ babynames, or any other package.
+Before we begin, let's learn a little about our data. The `babynames` dataset comes in the **babynames** package. The package is pre-installed for you, just as ggplot2 was pre-installed in the last tutorial. But unlike in the last tutorial, this time it is not pre-_loaded_ babynames, or any other package.
 
 What does this mean? In R, whenever you want to use a package that is not part of base R, you need to load the package with the command `library()`. Until you load a package, R will not be able to find the datasets and functions contained in the package. For example, if we asked R to display the `babynames` dataset, which comes in the babynames package, right now, we'd get the message below. R cannot find the dataset because we haven't loaded the babynames package.
 
@@ -83,7 +83,7 @@ In the chunk below, load babynames (the package) and then open the help page for
 ```{r babynames-1, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r babynames-1-solution}
+```{r babynames-1-solution, exercise.reveal_solution=TRUE}
 library(babynames)
 ?babynames
 ```
@@ -146,20 +146,20 @@ To see what I mean, use `library()` to load the tibble package in the chunk belo
 ```{r babynames-3, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r babynames-3-solution}
+```{r babynames-3-solution, exercise.reveal_solution=TRUE}
 library(tibble)
 babynames
 ```
 
 ```{r babynames-3-check}
-"Excellent! If you want to check whether or not an object is a tibble, you can use the `is_tibble()` function that comes in the tibble package. For example, this would return TRUE: `is_tibble(babynames)`."
+"If you want to check whether or not an object is a tibble, you can use the `is_tibble()` function that comes in the tibble package. For example, this would return TRUE: `is_tibble(babynames)`."
 ```
 
 ```{r echo = FALSE, message = FALSE}
 library(tibble)
 ```
 
-You do not need to worry much about tibbles in these tutorials; in future tutorials, I'll automatically convert each data frame into an interactive table. However, you should consider making tibbles an important part of your work in R.
+You do not need to worry much about tibbles in these tutorials; in future tutorials, it is possible to automatically convert each data frame into an interactive table. However, you should consider making tibbles an important part of your work in R.
 
 ### View()
 
@@ -228,7 +228,7 @@ Let's give this a try. We will use the ggplot2 and dplyr packages later in this 
 ```{r babyname-5, exercise = TRUE, exercise.setup = "bnames"}
 ```
 
-```{r babyname-5-solution}
+```{r babyname-5-solution, exercise.reveal_solution = TRUE}
 library("tidyverse")
 ```
 

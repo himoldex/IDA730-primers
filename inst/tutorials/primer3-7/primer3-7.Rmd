@@ -34,7 +34,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -91,13 +91,13 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-```{r r1-solution}
+```{r r1-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), alpha = 0.25)
 ```
 
 ```{r r1-check}
-"Good job! You can now identify which values contain more observations. The darker locations contain several points stacked on top of each other."
+"You can now identify which values contain more observations. The darker locations contain several points stacked on top of each other."
 ```
 
 ### Adjust the position
@@ -122,13 +122,13 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
 
-```{r r2-solution}
+```{r r2-solution, exercise.reveal_solution = TRUE}
 ggplot(data = mpg) +
   geom_jitter(mapping = aes(x = displ, y = hwy))
 ```
 
 ```{r r2-check}
-"Good job! Now let's look at ways to handle overplotting due to large datasets."
+"Now let's look at ways to handle overplotting due to large datasets."
 ```
 
 ## Large data
@@ -168,13 +168,13 @@ ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = carat, y = price))
 ```
 
-```{r r3-solution}
+```{r r3-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_boxplot(mapping = aes(x = carat, y = price, group = cut_width(carat, width = 0.2)))
 ```
 
 ```{r r3-check}
-"Good job! The medians of the boxplots give a somewhat more precise description of the relationship between carat and price than does the fan of individual points."
+"The medians of the boxplots give a somewhat more precise description of the relationship between carat and price than does the fan of individual points."
 ```
 
 ### geom_bin2d()
@@ -199,13 +199,13 @@ ggplot(data = diamonds) +
   geom_bin2d(mapping = aes(x = carat, y = price))
 ```
 
-```{r r4-solution}
+```{r r4-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_bin2d(mapping = aes(x = carat, y = price), bins = c(40, 50))
 ```
 
 ```{r r4-check}
-"Good job! As with histograms, bin2ds can reveal different information at different binwidths."
+"As with histograms, bin2ds can reveal different information at different binwidths."
 ```
 
 ### Exercise - geom_hex()
@@ -219,13 +219,13 @@ ggplot(data = diamonds) +
   geom_bin2d(mapping = aes(x = carat, y = price))
 ```
 
-```{r r5-solution}
+```{r r5-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_hex(mapping = aes(x = carat, y = price))
 ```
 
 ```{r r5-check}
-"Good job! You need to have the hexbin package installed on your computer, but not necessarily loaded, to use geom_hex()."
+"You need to have the hexbin package installed on your computer, but not necessarily loaded, to use geom_hex()."
 ```
 
 ### geom_density2d()
@@ -258,17 +258,18 @@ ggplot(data = diamonds) +
 Often density2d plots are easiest to read when you plot them on top of the original data. In the chunk below create a plot of diamond carat size vs. price. The plot should contain density2d lines superimposed _on top of_ the raw points. Make the raw points transparent with an alpha of 0.1.
 
 ```{r r6, exercise = TRUE}
+# type code below this line
 ```
 
 
-```{r r6-solution}
+```{r r6-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds, mapping = aes(x = carat, y = price)) +
   geom_point(alpha = 0.1) +
   geom_density2d()
 ```
 
 ```{r r6-check}
-"Good job! Plotting a summay on top of raw values is a common pattern in data science."
+"Plotting a summay on top of raw values is a common pattern in data science."
 ```
 
 ### Recap

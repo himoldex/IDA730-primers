@@ -4,7 +4,9 @@ output:
   learnr::tutorial:
     progressive: true
     allow_skip: true
-runtime: shiny_prerendered
+    df_print: default
+runtime: 
+  shiny_prerendered
 tutorial:
   id: "com.rstudio.primers.03-histograms"
   version: 1.0
@@ -32,7 +34,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -132,31 +134,34 @@ When you use `geom_histogram()`, you should always experiment with different bin
 To see an example of this, make a histogram of the `carat` variable in the `diamonds` dataset. Use a bin size of 0.5 carats. What does the overall shape of the distribution look like?
 
 ```{r r2, exercise = TRUE}
+# type code below this line
 ```
 
-```{r r2-check}
-"Good job! The most common diamond size is about 0.5 carats. Larger sizes become progressively less frequent as carat size increases. This accords with general knowledge about diamonds, so you may be prompted to stop exploring the distribution of carat size. But should you?"
-```
-
-```{r r2-solution}
+```{r r2-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = carat), binwidth = 0.5)
 ```
+
+```{r r2-check}
+"The most common diamond size is about 0.5 carats. Larger sizes become progressively less frequent as carat size increases. This accords with general knowledge about diamonds, so you may be prompted to stop exploring the distribution of carat size. But should you?"
+```
+
 
 ### Exercise 3 - another binwidth
 
 Recreate your histogram of `carat` but this time use a binwidth of 0.1. Does your plot reveal new information? Look closely. Is there more than one peak? Where do the peaks occur?
 
 ```{r r3, exercise = TRUE}
+# type code below this line
+```
+
+```{r r3-solution, exercise.reveal_solution = TRUE}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = carat), binwidth = 0.1)
 ```
 
 ```{r r3-check}
-"Good job! The new binwidth reveals a new phenomena: carat sizes like 0.5, 0.75, 1, 1.5, and 2 are much more common than carat sizes that do not fall near a common fraction. Why might this be?"
-```
-
-```{r r3-solution}
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = carat), binwidth = 0.1)
+"The new binwidth reveals a new phenomena: carat sizes like 0.5, 0.75, 1, 1.5, and 2 are much more common than carat sizes that do not fall near a common fraction. Why might this be?"
 ```
 
 ### Exercise 4 - another binwidth
@@ -164,15 +169,16 @@ ggplot(data = diamonds) +
 Recreate your histogram of `carat` a final time, but this time use a binwidth of 0.01 and set the first boundary to zero. Try to find one new pattern in the results.
 
 ```{r r4, exercise = TRUE}
+# type code below this line
+```
+
+```{r r4-solution, exercise.reveal_solution = TRUE}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = carat), binwidth = 0.01, boundary = 0)
 ```
 
 ```{r r4-check}
-"Good job! The new binwidth reveals another phenomena: each peak is very right skewed. In other words, diamonds that are 1.01 carats are much more common than diamonds that are .99 carats. Why would that be?"
-```
-
-```{r r4-solution}
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = carat), binwidth = 0.01, boundary = 0)
+"The new binwidth reveals another phenomena: each peak is very right skewed. In other words, diamonds that are 1.01 carats are much more common than diamonds that are .99 carats. Why would that be?"
 ```
 
 ### aesthetics
@@ -198,15 +204,16 @@ ggplot(data = diamonds) +
 ```
 
 ```{r r5, exercise = TRUE}
+# type code below this line
+```
+
+```{r r5-solution, exercise.reveal_solution = TRUE}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price, fill = cut), binwidth = 1000, boundary = 0)
 ```
 
 ```{r r5-check}
-"Good job! Did you ensure that each binwidth is 1000 and that the first boundary is zero?"
-```
-
-```{r r5-solution}
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = price, fill = cut), binwidth = 1000, boundary = 0)
+"Did you ensure that each binwidth is 1000 and that the first boundary is zero?"
 ```
 
 ## Similar geoms
@@ -230,8 +237,8 @@ But this display has some shortcomings:
 We can improve the plot by using a different geom to display the distributions of price values. ggplot2 includes three geoms that display the same information as a histogram, but in different ways:
 
 1. `geom_freqpoly()`
-1. `geom_density()`
-1. `geom_dotplot()`
+2. `geom_density()`
+3. `geom_dotplot()`
 
 ### geom_freqpoly()
 
@@ -250,13 +257,14 @@ Note that the bars are not part of the frequency polygon; they are just there fo
 Create the frequency polygon depicted above. It has a binwidth of 0.25 and starts at the boundary zero.
 
 ```{r r6, exercise = TRUE}
+# type code below this line
 ```
 
 ```{r r6-check}
-"Good job! By using a line instead of bars, frequency polygons can sometimes do things that histograms cannot."
+"By using a line instead of bars, frequency polygons can sometimes do things that histograms cannot."
 ```
 
-```{r r6-solution}
+```{r r6-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_freqpoly(mapping = aes(x = carat), binwidth = 0.25, boundary = 0)
 ```
@@ -271,15 +279,16 @@ ggplot(data = diamonds) +
 ```
 
 ```{r r7, exercise = TRUE}
+# type code below this line
+```
+
+```{r r7-solution, exercise.reveal_solution = TRUE}
+ggplot(data = diamonds) +
+  geom_freqpoly(mapping = aes(x = price, color = cut), binwidth = 1000, boundary = 0)
 ```
 
 ```{r r7-check}
-"Good job! Since lines do not occlude each other, `geom_freqpoly()` plots each sub-group against the same baseline: y = 0 (i.e. it unstacks the sub-groups). This makes it easier to compare the distributions. You can now see that for almost every price value, there are more Ideal cut diamonds than there are other types of diamonds."
-```
-
-```{r r7-solution}
-ggplot(data = diamonds) +
-  geom_freqpoly(mapping = aes(x = price, color = cut), binwidth = 1000, boundary = 0)
+"Since lines do not occlude each other, `geom_freqpoly()` plots each sub-group against the same baseline: y = 0 (i.e. it unstacks the sub-groups). This makes it easier to compare the distributions. You can now see that for almost every price value, there are more Ideal cut diamonds than there are other types of diamonds."
 ```
 
 ### geom_density()
@@ -320,15 +329,16 @@ ggplot(data = diamonds) +
 ```
 
 ```{r r8, exercise = TRUE}
+# type code below this line
+```
+
+```{r r8-solution, exercise.reveal_solution = TRUE}
+ggplot(data = diamonds) +
+  geom_density(mapping = aes(x = price, color = cut))
 ```
 
 ```{r r8-check}
-"Good job! You can now compare the most common prices for each sub-group. For example, the plot shows that the most common price for most diamonds is near $1000. However, the most common price for Fair cut diamonds is significantly higher, about $2500. We will come back to this oddity in a later tutorial."
-```
-
-```{r r8-solution}
-ggplot(data = diamonds) +
-  geom_density(mapping = aes(x = price, color = cut))
+"You can now compare the most common prices for each sub-group. For example, the plot shows that the most common price for most diamonds is near $1000. However, the most common price for Fair cut diamonds is significantly higher, about $2500. We will come back to this oddity in a later tutorial."
 ```
 
 ### Density parameters
@@ -357,14 +367,14 @@ ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = price, fill = cut), binwidth = 1000, boundary = 0)
 ```
 
-```{r r9-check}
-"Good job! Facets make it easier to compare sub-groups, but at the expense of separating the data. You may decide that frequency polygons and densities allow more direct comparisons."
-```
-
-```{r r9-solution}
+```{r r9-solution, exercise.reveal_solution = TRUE}
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = price, fill = cut), binwidth = 1000, boundary = 0) +
   facet_wrap( ~cut)
+```
+
+```{r r9-check}
+"Facets make it easier to compare sub-groups, but at the expense of separating the data. You may decide that frequency polygons and densities allow more direct comparisons."
 ```
 
 ### Recap

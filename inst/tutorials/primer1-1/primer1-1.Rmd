@@ -33,7 +33,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -62,13 +62,13 @@ R is easiest to use when you know how the R language works. This tutorial will t
 
 ### Run a function
 
-Can you use the `sqrt()` function in the chunk below to compute the square root of 962?
+Can you use the `sqrt()` function in the chunk below to compute the square root of 961?
 
-```{r functions-1, exercise = TRUE}
+```{r functions-1, exercise = TRUE, exercise.eval = FALSE}
 # Write you solution here
 ```
 
-```{r functions-1-solution}
+```{r functions-1-solution, exercise.reveal_solution = TRUE}
 sqrt(961)
 ```
 
@@ -80,12 +80,12 @@ Use the code chunk below to examine the code that `sqrt()` runs.
 # Write you solution here
 ```
 
-```{r functions-2-solution}
+```{r functions-2-solution, exercise.reveal_solution = TRUE}
 sqrt
 ```
 
 ```{r functions-2-check}
-"Good job! sqrt immediately triggers a low level algorithm optimized for performance, so there is not much code to see."
+"`sqrt` immediately triggers a low level algorithm optimized for performance, so there is not much code to see."
 ```
 
 ### lm
@@ -96,24 +96,24 @@ Compare the code in `sqrt()` to the code in another R function, `lm()`. Examine 
 # Write you solution here
 ```
 
-```{r functions-3-solution}
+```{r functions-3-solution, exercise.reveal_solution = TRUE}
 lm
 ```
 
 ### help pages
 
-Wow! `lm()` runs a lot of code. What does it do? Open the help page for `lm()` in the chunk below and find out.
+`lm()` runs a lot of code. What does it do? Open the help page for `lm()` in the chunk below and find out.
 
 ```{r functions-4, exercise = TRUE}
 # Write you solution here
 ```
 
-```{r functions-4-solution}
+```{r functions-4-solution, exercise.reveal_solution = TRUE}
 ?lm
 ```
 
 ```{r functions-4-check}
-"Good job! `lm()` is R's function for fitting basic linear models. No wonder it runs so much code."
+"`lm()` is R's function for fitting basic linear models. No wonder it runs so much code."
 ```
 
 ### Code comments
@@ -124,8 +124,8 @@ What do you think the chunk below will return? Run it and see. The result should
 # Write you solution here
 ```
 
-```{r functions-5-solution}
-sqrt(961)
+```{r functions-5-solution, exercise.reveal_solution = TRUE}
+#sqrt(961)
 ```
 
 
@@ -143,12 +143,12 @@ sqrt(961)
 # Write you solution here
 ```
 
-```{r arguments-1-solution}
+```{r arguments-1-solution, exercise.reveal_solution = TRUE}
 args(rnorm)
 ```
 
 ```{r arguments-1-check}
-"Good job! `n` specifies the number of random normal variables to generate. `mean` and `sd` describe the distribution to generate the random values with." 
+"`n` specifies the number of random normal variables to generate. `mean` and `sd` describe the distribution to generate the random values with." 
 ```
 
 ### optional arguments
@@ -170,7 +170,7 @@ Use `rnrom()` to generate 100 random normal values with a mean of 100 and a stan
 # Write you solution here
 ```
 
-```{r arguments-3-solution}
+```{r arguments-3-solution, exercise.reveal_solution = TRUE}
 rnorm(100, mean = 100, sd = 50)
 ```
 
@@ -182,7 +182,7 @@ Can you spot the error in the code below? Fix the code and then re-run it.
 rnorm(100, mu = 100, sd = 50)
 ```
 
-```{r arguments-4-solution}
+```{r arguments-4-solution, exercise.reveal_solution = TRUE}
 rnorm(100, mean = 100, sd = 50)
 ```
 
@@ -217,7 +217,7 @@ In the code chunk below, save the results of `rnorm(100, mean = 100, sd = 15)` t
 # Write you solution here
 ```
 
-```{r objects-2-solution}
+```{r objects-2-solution, exercise.reveal_solution = TRUE}
 data <- rnorm(100, mean = 100, sd = 15)
 hist(data)
 ```
@@ -231,15 +231,16 @@ data <- rnorm(100, mean = 100, sd = 15)
 copy <- data
 ```
 
-```{r objects-3-solution}
+```{r objects-3-solution, exercise.reveal_solution = TRUE}
 data <- rnorm(100, mean = 100, sd = 15)
 copy <- data
+
 data
 copy
 ```
 
 ```{r objects-3-check}
-"Good job! R saves a copy of the contents in data to copy."
+"R saves a copy of the contents in data to copy."
 ```
 
 ### Data sets
@@ -250,12 +251,12 @@ Objects provide an easy way to store data sets in R. In fact, R comes with many 
 # Write you solution here
 ```
 
-```{r objects-4-solution}
+```{r objects-4-solution, exercise.reveal_solution = TRUE}
 iris
 ```
 
 ```{r objects-4-check}
-"Good job! You can learn more about iris by examining its help page with `?iris`."
+"You can learn more about iris by examining its help page with `?iris`."
 ```
 
 ### rm()
@@ -267,15 +268,16 @@ iris <- 1
 iris
 ```
 
-```{r objects-5-solution}
+```{r objects-5-solution, exercise.reveal_solution = TRUE}
 iris <- 1
 iris
+
 rm(iris)
 iris
 ```
 
 ```{r objects-5-check}
-"Good job! Unfortunately, `rm()` cannot help you if you overwrite one of your own objects."
+"Unfortunately, `rm()` cannot help you if you overwrite one of your own objects."
 ```
 
 ## Vectors
@@ -292,11 +294,11 @@ In the chunk below, create a vector that contains the integers from one to ten.
 # Write you solution here
 ```
 
-```{r vectors-1-solution}
+```{r vectors-1-solution, exercise.reveal_solution = TRUE}
 c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
-### :
+### `:`
 
 If your vector contains a sequence of contiguous integers, you can create it with the `:` shortcut. Run `1:10` in the chunk below. What do you get? What do you suppose `1:20` would return?
 
@@ -304,11 +306,11 @@ If your vector contains a sequence of contiguous integers, you can create it wit
 # Write you solution here
 ```
 
-```{r vectors-2-solution}
+```{r vectors-2-solution, exercise.reveal_solution = TRUE}
 1:10
 ```
 
-### []
+### `[]`
 
 You can extract any element of a vector by placing a pair of brackets behind the vector. Inside the brackets place the number of the element that you'd like to extract. For example, `vec[3]` would return the third element of the vector named `vec`.
 
@@ -318,12 +320,13 @@ Use the chunk below to extract the fourth element of `vec`.
 vec <- c(1, 2, 4, 8, 16)
 ```
 
-```{r vectors-3-solution}
+```{r vectors-3-solution, exercise.reveal_solution = TRUE}
 vec <- c(1, 2, 4, 8, 16)
+
 vec[4]
 ```
 
-### More []
+### More `[]`
 
 You can also use `[]` to extract multiple elements of a vector. Place the vector `c(1,2,5)` between the brackets below. What does R return?
 
@@ -332,7 +335,7 @@ vec <- c(1, 2, 4, 8, 16)
 vec[]
 ```
 
-```{r vectors-4-solution}
+```{r vectors-4-solution, exercise.reveal_solution = TRUE}
 vec <- c(1, 2, 4, 8, 16)
 vec[c(1,2,5)]
 ```
@@ -347,8 +350,9 @@ Extract the element named gamma from the vector below.
 vec2 <- c(alpha = 1, beta = 2, gamma = 3)
 ```
 
-```{r vectors-5-solution}
+```{r vectors-5-solution, exercise.reveal_solution = TRUE}
 vec2 <- c(alpha = 1, beta = 2, gamma = 3)
+
 vec2["gamma"]
 ```
 
@@ -361,7 +365,7 @@ c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) + c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
 ```{r vectors-6-check}
-"Good job! Like many R functions, R's math operators are vectorised: they're designed to work with vectors by repeating the operation for each pair of elements."
+"Like many R functions, R's math operators are vectorised: they're designed to work with vectors by repeating the operation for each pair of elements."
 ```
 
 ### Vector recycling
@@ -373,7 +377,7 @@ Predict what the code below will return. Then look at the result.
 ```
 
 ```{r vectors-7-check}
-"Good job! Whenever you try to work with vectors of varying lengths (recall that `1` is a vector of length one), R will repeat the shorter vector as needed to compute the result."
+"Whenever you try to work with vectors of varying lengths (recall that `1` is a vector of length one), R will repeat the shorter vector as needed to compute the result."
 ```
 
 ## Types
@@ -405,7 +409,8 @@ question('What type of data is `"1L"`',
          answer("integer", message = "Close. `1L` would be an integer, but look closer."),
          answer("character", correct = TRUE),
          answer("logical"),
-         allow_retry = TRUE)
+         allow_retry = TRUE,
+         random_answer_order = TRUE)
 ```
 
 ### Integers
@@ -416,7 +421,7 @@ Create a vector of integers from one to five. Can you imagine why you might want
 # Write you solution here
 ```
 
-```{r types3-solution}
+```{r types3-solution, exercise.reveal_solution = TRUE}
 c(1L, 2L, 3L, 4L, 5L)
 ```
 
@@ -424,13 +429,13 @@ c(1L, 2L, 3L, 4L, 5L)
 
 Computers must use a finite amount of memory to store decimal numbers (which can sometimes require infinite precision). As a result, some decimals can only be saved as very precise approximations. From time to time you'll notice side effects of this imprecision, like below.
 
-Compute the square root of two,square the answer (e.g. multiply the square root of two by the square root of two), and then subtract two from the result. What answer do you expect? What answer do you get?
+Compute the square root of two, square the answer (e.g. multiply the square root of two by the square root of two), and then subtract two from the result. What answer do you expect? What answer do you get?
 
 ```{r types4, exercise = TRUE}
 # Write you solution here
 ```
 
-```{r types4-solution}
+```{r types4-solution, exercise.reveal_solution = TRUE}
 sqrt(2) * sqrt(2) - 2
 sqrt(2)^2 - 2
 ```
@@ -442,7 +447,8 @@ question('How many types of data can you put into a single vector?',
          answer("1", correct = TRUE),
          answer("6"),
          answer("As many as you like"),
-         allow_retry = TRUE)
+         allow_retry = TRUE,
+         random_answer_order = TRUE)
 ```
 
 ### Character or object?
@@ -458,7 +464,8 @@ question('Which of these are object names? What is the difference between object
          answer('"data"'),
          answer("a", correct = TRUE),
          allow_retry = TRUE,
-         correct = "Character strings are surrounded by quotation marks, object names are not.")
+         correct = "Character strings are surrounded by quotation marks, object names are not.",
+         random_answer_order = TRUE)
 ```
 
 ## Lists 
@@ -474,7 +481,8 @@ question('Which data structure(s) could you use to store these pieces of data in
          answer("a vector"),
          answer("a list", correct = TRUE),
          answer("neither"),
-         allow_retry = TRUE)
+         allow_retry = TRUE,
+         random_answer_order = TRUE)
 ```
 
 ### Make a list
@@ -485,7 +493,7 @@ Make a list that contains the elements `1001`, `TRUE`, and `"stories"`. Give eac
 # Write you solution here
 ```
 
-```{r lists2-solution}
+```{r lists2-solution, exercise.reveal_solution = TRUE}
 list(number = 1001, logical = TRUE, string = "stories")
 ```
 
@@ -512,10 +520,11 @@ logs <- c(TRUE, TRUE, FALSE, TRUE)
 strs <- c("apple", "banana", "carrot", "duck")
 ```
 
-```{r lists4-solution}
+```{r lists4-solution, exercise.reveal_solution = TRUE}
 nums <- c(1, 2, 3, 4)
 logs <- c(TRUE, TRUE, FALSE, TRUE)
 strs <- c("apple", "banana", "carrot", "duck")
+
 data.frame(numbers = nums, logicals = logs, strings = strs)
 ```
 
@@ -534,7 +543,7 @@ strs <- c("apple", "banana", "carrot", "duck")
 df <- data.frame(numbers = nums, logicals = logs, strings = strs)
 ```
 
-```{r lists5-solution}
+```{r lists5-solution, exercise.reveal_solution = TRUE}
 df$strings
 ```
 
@@ -552,7 +561,8 @@ question('What does this common error message suggest? `object _____ does not ex
          answer("You misspelled your object name"),
          answer("You've forgot to load the package that ____ comes in"),
          answer("Either", correct = TRUE),
-         allow_retry = TRUE)
+         allow_retry = TRUE,
+         random_answer_order = TRUE)
 ```
 
 ### Load a package
@@ -563,12 +573,12 @@ In the code chunk below, load the `tidyverse` package. Whenever you load a packa
 # Write you solution here
 ```
 
-```{r packages2-solution}
+```{r packages2-solution, exercise.reveal_solution = TRUE}
 library(tidyverse)
 ```
 
 ```{r packages2-check}
-"Good job! R will keep the packages loaded until you close your R session. When you re-open R, you'll need to reload you packages."
+"R will keep the packages loaded until you close your R session. When you re-open R, you'll need to reload you packages."
 ```
 
 ### Quotes
@@ -585,12 +595,12 @@ But what if the package that you want to load is not installed on your computer?
 # Write you solution here
 ```
 
-```{r packages3-solution}
+```{r packages3-solution, exercise.reveal_solution = TRUE}
 install.packages("dplyr")
 ```
 
 ```{r packages3-check}
-"Good job! You only need to install a package once, unless you wish to update your local copying by reinstalling the package. Notice that `install.packages()` _always_ requires quotes around the package name."
+"You only need to install a package once, unless you wish to update your local copying by reinstalling the package. Notice that `install.packages()` _always_ requires quotes around the package name."
 ```
 
 ### Congratulations!

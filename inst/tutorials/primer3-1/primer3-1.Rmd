@@ -34,7 +34,7 @@ tryCatch(
 )
 ```
 
-```{r, context = "render", results = 'asis', echo = FALSE}
+```{r, context = "render", results = 'asis', echo = FALSE, include=FALSE}
 tryCatch(
   source("https://metrics.rstudioprimers.com/learnr/installClient", local=TRUE)$value,
   error = function(e){ 
@@ -78,19 +78,20 @@ Your goal during EDA is to develop an understanding of your data. The easiest wa
 > "Far better an approximate answer to the right question, which is often
 > vague, than an exact answer to the wrong question, which can always be made
 > precise." --- John Tukey
+
 ### Quantity vs Quality
 
 EDA is, fundamentally, a creative process. And like most creative processes, the key to asking _quality_ questions is to generate a large _quantity_ of questions. It is difficult to ask revealing questions at the start of your analysis because you do not know what insights are contained in your dataset. On the other hand, each new question that you ask will highlight a new aspect of your data and increase your chance of making a discovery. You can quickly drill down into the most interesting parts of your data---and develop a set of thought-provoking questions---if you follow up each question with a new question based on what you find.
 
 > "There are no routine statistical questions, only questionable statistical
 > routines." --- Sir David Cox
+
 ### Two useful questions
 
 There is no rule about which questions you should ask to guide your research. However, two types of questions will always be useful for making discoveries within your data. You can loosely word these questions as:
 
 1. What type of **variation** occurs **within** my variables?
-
-1. What type of **covariation** occurs **between** my variables?
+2. What type of **covariation** occurs **between** my variables?
 
 The rest of this tutorial will look at these two questions. To make the discussion easier, let's define some terms...
 
@@ -389,7 +390,7 @@ You've learned a lot in this tutorial. Here's what you should keep with you:
 * EDA is an iterative cycle built around asking and refining questions.
 * These two questions are always useful:
     1. What type of variation occurs _within_ my variables?
-    1. What type of covariation occurs _between_ my variables?
+    2. What type of covariation occurs _between_ my variables?
 * Remember the definitions of _variables_, _values_, _observations_, _variation_, _covariation_, _categorical_, and _continuous_. You'll see them again. Frequently.
 
 Throughout the tutorial, you also encountered several recommendations for plots that visualize variation and covariation for categorical and continuous variables. Plots are a bit like questions in EDA: you should make many quickly and try anything that strikes your fancy. You can refine your plots later to share with others. A lot of refinement will occur naturally as you iterate during EDA. 
