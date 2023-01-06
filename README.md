@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-## him.ida730
+## IDA730-primers
 
-The goal of `him.ida730` R package is to provide students access to
+The goal of `IDA730-primers` R package is to provide students access to
 repository with selected interactive course materials locally (offline).
-The package is hosted on GitHub at `himoldex/him.ida730` as public
+The package is hosted on GitHub at `himoldex/IDA730-primers` as public
 repository.
 
 ### Installation of the package
 
-You can install the latest version of `him.ida730` in RStudio as
+You can install the latest version of `IDA730-primers` in RStudio as
 follows:
 
 -   by executing the code below iteratively (line by line) in console of
@@ -26,7 +26,7 @@ install.packages("devtools")
 library(devtools)
 
 # run the code chunk in RStudio
-devtools::install_github("himoldex/him.ida730")
+devtools::install_github("himoldex/IDA730-primers")
 ```
 
 ### Loading a tutorial
@@ -38,9 +38,9 @@ tidy and transform data, and visualize data while performing exploratory
 data analysis:
 
 ``` r
-#library(him.ida730)
+#library(IDA730-primers)
 
-# Work offline with interactive tutorials available at RStudio in `him.ida730`:
+# Work offline with interactive tutorials available at RStudio in `IDA730-primers`:
 #----------------------------------------------
 # Section 1 : The Basics
 #----------------------------------------------
@@ -74,7 +74,7 @@ data analysis:
 # primer4-3 : "Join Data Sets"
 
 # To load a specific tutorial execute a following command:
-#learnr::run_tutorial("primer1-1", "him.ida730")
+#learnr::run_tutorial("primer1-1", "IDA730-primers")
 
 # Source:
 # https://rstudio.cloud/learn/primers
